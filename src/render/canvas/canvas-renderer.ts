@@ -146,7 +146,8 @@ export class CanvasRenderer extends Renderer {
 
     renderTextWithLetterSpacing(text: TextBounds, letterSpacing: number, baseline: number): void {
         if (letterSpacing === 0) {
-            this.ctx.fillText(text.text, text.bounds.left, text.bounds.top + baseline);
+            // this.ctx.textBaseline = 'ideographic';
+            this.ctx.fillText(text.text, text.bounds.left, text.bounds.top - text.bounds.height / 2 + baseline);
         } else {
             const letters = segmentGraphemes(text.text);
             letters.reduce((left, letter) => {
